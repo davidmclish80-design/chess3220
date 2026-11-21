@@ -1,5 +1,5 @@
 import chess
-from evaluation import evaluate_board
+from .evaluation import evaluate_board
 
 def minimax(board, depth, alpha, beta,  maximizing_player):
 
