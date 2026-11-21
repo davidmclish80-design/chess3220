@@ -1,6 +1,6 @@
 import chess
 
-from evaluation import evaluate_board
+from .evaluation import evaluate_board
 
 
 def Max(board, depth, agent_color, alpha = float("-inf"), beta = float("inf"), stats = None):

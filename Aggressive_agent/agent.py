@@ -1,6 +1,6 @@
 import chess
 
-from minimax import Max, Min, MaxWithoutPrune, MinWithoutPrune
+from .minimax import Max, Min, MaxWithoutPrune, MinWithoutPrune
 
 
 def choose_move(board, depth=3):
