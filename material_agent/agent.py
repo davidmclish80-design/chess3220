@@ -1,5 +1,5 @@
 import chess
-from minimax import minimax
+from .minimax import minimax
 
 def choose_move(board, depth):
     maximizing_player = board.turn ==chess.WHITE
