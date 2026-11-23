@@ -1,5 +1,6 @@
 import chess
 
+#Used in evaluate_threats(). A way to determine which piece is to be attacked if attacking multiple.
 PIECE_VALUES = {
     chess.PAWN: 1,
     chess.KNIGHT: 3,
@@ -9,10 +10,10 @@ PIECE_VALUES = {
     chess.KING: 0
 }
 
-board1 = chess.Board("4k3/8/8/3q4/4N3/8/8/4K3 w - - 0 1")
-board2 = chess.Board("4k3/8/8/3q4/8/4N3/8/4K3 w - - 0 1")
-board3 =chess.Board("4k3/8/8/8/8/8/4R3/4K3 b - - 0 1")
 
+#Main function for pushing th aggressive functionality. 
+#This function pushes for the ability to attack and kill pieces. 
+#Slighty considers pieces defended
 def evaluate_threats(board, color):
     score = 0
     for square, piece in board.piece_map().items():
@@ -35,7 +36,8 @@ def evaluate_threats(board, color):
             score += piece_value * 0.5
     return score
 
-
+#Determines if a piece is being attacked to push the aggressive functionality.
+#Slightly considers the pieces defending another piece.
 def inspect_threat(board, square, attacker_color):
 
     target = board.piece_at(square)
@@ -58,6 +60,7 @@ def inspect_threat(board, square, attacker_color):
         "defenders": defenders
     }
 
+#Evaluates pressuse being placed on the enemy king
 def evaluate_king_pressure(board, color):
     score = 0
     # Find the enemy king
@@ -79,7 +82,9 @@ def evaluate_king_pressure(board, color):
         score += 2
     return score
 
-
+#evaluate_piece_activity uses this. Center squares provide relatively 
+# more access to squares especially depending on the piece in the center.
+#More access means greater ability to threathen.
 CENTER_SQUARES = {
     chess.D4,
     chess.E4,
@@ -87,7 +92,8 @@ CENTER_SQUARES = {
     chess.E5
 }
 
-
+#This function considers the number of squares being attacked by pieces.
+#Greater number of sqaures attacked, means more threats
 def evaluate_piece_activity(board, color):
     score = 0
     for square, piece in board.piece_map().items():
@@ -110,90 +116,8 @@ def evaluate_piece_activity(board, color):
 
 
 
-# print(evaluate_threats(board1, chess.WHITE))
-# print(evaluate_threats(board1, chess.BLACK))
-# print(evaluate_threats(board2, chess.WHITE))
-# print(evaluate_threats(board2, chess.BLACK))
-
-
-# whiteThreats = evaluate_threats(board2, chess.WHITE)
-# blackThreats = evaluate_threats(board2, chess.BLACK)
-# threatBalance = whiteThreats - blackThreats
-# whiteAttackers = board2.attackers(chess.WHITE, chess.E5)
-# blackDefenders = board2.attackers(chess.BLACK, chess.E5)
-
-
-# result = inspect_threat(board1, chess.E5, chess.WHITE)
-# print(result)
-# print(result["target"])
-# print(result["attackers"])
-# print(result["defenders"])
-
-
-# attackers = board.attackers(chess.WHITE, chess.E5)
-# for square in attackers:
-#     piece = board.piece_at(square)
-#     print(chess.square_name(square), piece)
-# if len(attackers) > len(defenders):
-#     print("More attackers than defenders!")
-
-
-
-# print(chess.square_name(board2.king(chess.WHITE)))
-# print(chess.square_name(board2.king(chess.BLACK)))
-
-
-# color = chess.WHITE  # WHITE => true, BLACK => false
-# enemy_color = not color ##SINCE colors are represented as true or false
-# enemy_king_square = board2.king(not color)
-# surrounding_squares = board2.attacks(enemy_king_square)
-
-# print(board3)
-# score = evaluate_king_pressure(board3, chess.WHITE)
-# print(score)
-
-# def evaluate_board(board):
-#     white_threats = evaluate_threats(board, chess.WHITE)
-#     black_threats = evaluate_threats(board, chess.BLACK)
-
-#     white_pressure = evaluate_king_pressure(board, chess.WHITE)
-#     black_pressure = evaluate_king_pressure(board, chess.BLACK)
-
-#     threat_balance = white_threats - black_threats
-#     pressure_balance = white_pressure - black_pressure
-
-#     score = threat_balance + pressure_balance
-#     return score
-
-
-
-# def evaluate_board(board):
-
-#     # Threat evaluation
-#     white_threats = evaluate_threats(board, chess.WHITE)
-#     black_threats = evaluate_threats(board, chess.BLACK)
-
-#     # King pressure
-#     white_pressure = evaluate_king_pressure(board, chess.WHITE)
-#     black_pressure = evaluate_king_pressure(board, chess.BLACK)
-
-#     # Piece activity
-#     white_activity = evaluate_piece_activity(board, chess.WHITE)
-#     black_activity = evaluate_piece_activity(board, chess.BLACK)
-
-#     # Calculate differences
-#     threat_balance = white_threats - black_threats
-#     pressure_balance = white_pressure - black_pressure
-#     activity_balance = white_activity - black_activity
-
-#     return (
-#         threat_balance
-#         + pressure_balance
-#         + activity_balance
-#     )
-
-
-
+#Adds slight value to the number of pieces remaining to make the agent 
+# slightly more aware of its possible disadvantage in numbers
 def evaluate_material(board):
 
     score = 0
@@ -211,12 +135,14 @@ def evaluate_material(board):
     return score
 
 
+#Values used to adjust the weights of the scenarios being 
+# considerd by the functions above, in the function evaluate_white_perspective()
 THREAT_WEIGHT = 1.5
 KING_PRESSURE_WEIGHT = 2.0
 ACTIVITY_WEIGHT = 0.5
 MATERIAL_WEIGHT = 1.0
 
-
+#This function uses the functions defined above to score the state of the board based on a white playing perspective
 def evaluate_white_perspective(board):
 
     # 1. Handle completed games
@@ -264,9 +190,9 @@ def evaluate_white_perspective(board):
 
 
 #Since the functions above calculate based on a white perspectve,
-#to account for agent being black, evaulate_board() below
-#inverses the score received to make it black's persepctive
-#if the agent is Black that is.
+# to account for the agent possibly being black, evaulate_board() below
+# inverses the score received to make it black's perspective
+# if the agent is Black that is.
 def evaluate_board(board, agent_color):
     score = evaluate_white_perspective(board)
     return score if agent_color == chess.WHITE else -score
