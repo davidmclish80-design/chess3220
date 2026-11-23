@@ -1,6 +1,6 @@
 # chess3220
 
-# Chess AI – Minimax and Alpha-Beta Pruning
+# Chess AI – Using Minimax and Alpha-Beta Pruning with differing algorithm strategies
 
 ## Project Overview
 
