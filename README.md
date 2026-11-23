@@ -6,7 +6,7 @@
 
 This project implements two chess-playing agents using the Minimax algorithm enhanced with Alpha-Beta pruning. The python-chess library is used to manage board states, validate moves and detect game outcomes.
 
-The project includes a graphical user interface that supports Human vs Agent and Agent vs Agent gameplay, as well as an automated match harness for testing both agents.
+The project includes a graphical user interface that supports Human vs Agent and Agent vs Agent gameplay, as well as an automated match harness for testing both agents. Additionally, a basic reference agent is used to evaluate the performance of both chess-playing agents against a random-move strategy.
 
 ## Algorithm Strategies for Agent 
 
@@ -20,6 +20,10 @@ Prioritizes offensive opportunities by evaluating threats, king pressure, piece 
 
 Both agents use Minimax with Alpha-Beta pruning to determine their moves.
 
+### Reference Agent
+
+Randomly selects legal chess moves without using a search algorithm or evaluation function. It serves as a basic reference for testing the effectiveness of both chess-playing agents.
+
 
 ## File Descriptions
 
@@ -32,6 +36,10 @@ Both agents use Minimax with Alpha-Beta pruning to determine their moves.
 - **`match.py`** – Runs automated games between both agents, alternates their colours and records the results.
 - **`match_games.pgn`** – Stores the moves and outcomes of completed automated games.
 - **`match_results.txt`** – Stores individual game statistics and the overall match results.
+- **`reference_agent.py`** – Implements a basic random-move agent, automatically tests both chess-playing
+        agents against it and displays a summary table of their performances.
+
+- **`reference_results.txt`** – Stores individual game results and statistics from the reference-agent tests.
 - **`.gitignore`** – Prevents unnecessary files, such as Python cache files and virtual environments, from being tracked.
 
 ## Installation
@@ -116,3 +124,24 @@ The number of games and search depth can be modified using the `NUMBER_OF_GAMES`
 
 Upon completion, the match harness records the moves in `match_games.pgn` and the match statistics in `match_results.txt`. 
 Running the match harness again overwrites the previous match records.
+
+## Running the Reference Agent Tests
+
+To test both chess-playing agents against the basic reference agent:
+
+```bash
+python reference_agent.py
+```
+
+The program automatically runs four games, with each chess-playing agent playing once as White and once as Black against the reference agent.
+
+Both chess-playing agents use a search depth of two, while the reference agent randomly selects legal moves. A fixed random seed is used to ensure reproducibility.
+
+Upon completion, the program displays a final summary table containing the total wins, losses, draws and number of half-moves played for each colour assignment.
+
+The individual game results and statistics are saved in reference_results.txt.
+
+Running the reference-agent tests again overwrites the previous reference-agent results.\
+
+
+*Note: AI was used to assist with debugging, testing and documentation.

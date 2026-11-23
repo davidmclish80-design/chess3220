@@ -1,0 +1,30 @@
+REFERENCE AGENT TEST RESULTS
+Search depth: 2
+
+Agent: Material Agent
+Colour: White
+Result: Win
+Termination: CHECKMATE
+Total half-moves: 21
+Duration: 1.47 seconds
+
+Agent: Material Agent
+Colour: Black
+Result: Win
+Termination: CHECKMATE
+Total half-moves: 28
+Duration: 1.51 seconds
+
+Agent: Aggressive Agent
+Colour: White
+Result: Win
+Termination: CHECKMATE
+Total half-moves: 41
+Duration: 2.52 seconds
+
+Agent: Aggressive Agent
+Colour: Black
+Result: Win
+Termination: CHECKMATE
+Total half-moves: 54
+Duration: 2.10 seconds
