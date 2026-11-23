@@ -1,0 +1,67 @@
+CHESS AGENT MATCH REPORT
+Search depth: 3
+Number of games: 6
+
+Game 1
+White: material
+Black: aggressive
+Winner: material
+Result: 1-0
+Termination: CHECKMATE
+Total half-moves: 93
+Duration: 497.92 seconds
+
+Game 2
+White: aggressive
+Black: material
+Winner: material
+Result: 0-1
+Termination: CHECKMATE
+Total half-moves: 86
+Duration: 661.14 seconds
+
+Game 3
+White: material
+Black: aggressive
+Winner: material
+Result: 1-0
+Termination: CHECKMATE
+Total half-moves: 93
+Duration: 392.43 seconds
+
+Game 4
+White: aggressive
+Black: material
+Winner: material
+Result: 0-1
+Termination: CHECKMATE
+Total half-moves: 86
+Duration: 459.52 seconds
+
+Game 5
+White: material
+Black: aggressive
+Winner: material
+Result: 1-0
+Termination: CHECKMATE
+Total half-moves: 93
+Duration: 114.63 seconds
+
+Game 6
+White: aggressive
+Black: material
+Winner: material
+Result: 0-1
+Termination: CHECKMATE
+Total half-moves: 86
+Duration: 131.42 seconds
+
+
+FINAL MATCH RESULTS
+Total games: 6
+Material Agent wins: 6
+Aggressive Agent wins: 0
+Draws: 0
+Material Agent points: 6.0
+Aggressive Agent points: 0.0
+Total duration: 2257.15 seconds
