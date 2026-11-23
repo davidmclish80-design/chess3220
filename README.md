@@ -20,28 +20,6 @@ Prioritizes offensive opportunities by evaluating threats, king pressure, piece 
 
 Both agents use Minimax with Alpha-Beta pruning to determine their moves.
 
-## Project Structure
-
-```text
-chess3220/
-├── material_agent/
-│   ├── __init__.py
-│   ├── agent.py
-│   ├── evaluation.py
-│   └── minimax.py
-├── Aggressive_agent/
-│   ├── __init__.py
-│   ├── agent.py
-│   ├── evaluation.py
-│   └── minimax.py
-├── controller.py
-├── gui.py
-├── match.py
-├── match_games.pgn
-├── match_results.txt
-├── .gitignore
-└── README.md
-```
 
 ## File Descriptions
 
