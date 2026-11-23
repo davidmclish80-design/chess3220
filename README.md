@@ -8,7 +8,7 @@ This project implements two chess-playing agents using the Minimax algorithm enh
 
 The project includes a graphical user interface that supports Human vs Agent and Agent vs Agent gameplay, as well as an automated match harness for testing both agents.
 
-## Agent Strategies
+## Algorithm Strategies for Agent 
 
 ### Material-Based Agent
 
