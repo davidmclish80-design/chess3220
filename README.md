@@ -1,6 +1,7 @@
 # chess3220
 
 # Chess AI – Using Minimax and Alpha-Beta Pruning with differing algorithm strategies
+#group members: Shaun Webb(620162292), David McLish(620171852)
 
 ## Project Overview
 
@@ -11,10 +12,12 @@ The project includes a graphical user interface that supports Human vs Agent and
 ## Algorithm Strategies for Agent 
 
 ### Material-Based Agent
+Agent was developed by shaun
 
 Prioritizes gaining and maintaining a material advantage by assigning numerical values to chess pieces. The agent also uses positional bonuses for pawns and knights and a repetition penalty to discourage repetitive moves.
 
 ### Aggressive Agent 
+Agent was developed by David.
 
 Prioritizes offensive opportunities by evaluating threats, king pressure, piece activity and material balance.
 
